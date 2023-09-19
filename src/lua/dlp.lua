@@ -24,7 +24,7 @@ local function resp_replace_kw(chunk, eof)
    
     if nil ~= buffered and eof then
         local whole = table.concat(buffered)
-        ngx.ctx.buffered2 = nil
+        ngx.ctx.buffered = nil
         local new_context, n, err
         local engine = dlp_engine
         if engine == nil then
@@ -48,7 +48,7 @@ function _M.init_worker(confPath)
 end
 
 function _M.body_filter_by_lua()
-	local resp_body = ngx.arg[1] 
+	local resp_body = ngx.arg[1] --获取响应体
 	local eof = ngx.arg[2]
 	resp_replace_kw(resp_body, eof)
 end
