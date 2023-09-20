@@ -4,5 +4,5 @@ FLAGS := -gcflags=all="-N -l"
 .PHONY: all dep build clean lib
 all: build
 
-lib:
+build:
 	@go build -o libdlp.so -buildmode=c-shared dlp.go
